@@ -1,0 +1,495 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
+		<script src="js/mui.min.js"></script>
+		<style type="text/css">
+			/*下拉刷新样式*/
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			/*自定义样式*/
+			.mui-bar-nav{background-color: #3db6fd;}
+			.header-icon-color{color: #fff;}
+			.mui-bar-tab{background-color: #fff;}
+			.mui-bar-tab .mui-tab-item{color: #999;}
+			.mui-slider-indicator{background-color: #fff;}
+			/**/
+			#tabbarindex{
+				position: relative;
+			}
+			.indexnavpar{
+				position: absolute;
+				top: 0;left: 0;
+				z-index: 10;
+			}
+			.indexnavpar .indexnav{
+				width: 33.3333%;
+				vertical-align: middle;
+			}
+			.indexnavfirst{
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+				
+			}
+			.mui-bar-nav~.mui-content .mui-pull-top-pocket{
+				top: 0;
+			}
+			.mui-pull{
+				line-height: 40px;
+			}
+			/*.pullrefresh{min-height: 1000px;}*/
+			.mui-table-view{background-color: #f8f8f8;padding: 0 20px;}
+		</style>
+	</head>
+	<body>
+		<!-- 主界面菜单同时移动 -->
+		    <!-- 侧滑导航根容器 -->
+		    <div class="mui-off-canvas-wrap mui-draggable">
+		        <!-- 主页面容器 -->
+		        <div class="mui-inner-wrap">
+		            <!-- 菜单容器 -->
+		            <aside class="mui-off-canvas-left" id="offCanvasSide">
+		                <div class="mui-scroll-wrapper">
+		                    <div class="mui-scroll">
+		                        <!-- 菜单具体展示内容 -->
+		                        
+		                    </div>
+		                </div>
+		            </aside>
+		            <!-- 主页面标题 -->
+		            <header class="mui-bar mui-bar-nav">
+		                <a class="mui-icon mui-icon-contact mui-pull-left header-icon-color" href="#offCanvasSide"></a>
+						<h1 id="title" class="mui-title">趣聊</h1>
+						<a class="mui-icon mui-icon-search mui-pull-right header-icon-color"></a>
+		            </header>
+		            <nav class="mui-bar mui-bar-tab">
+						<a class="mui-tab-item mui-active" href="#tabbarindex">
+							<span class="mui-icon mui-icon-home"></span>
+							<span class="mui-tab-label">首页</span>
+						</a>
+						<a class="mui-tab-item" href="#tabbar-faxian">
+							<span class="mui-icon mui-icon-email"><span class="mui-badge">9</span></span>
+							<span class="mui-tab-label">发现</span>
+						</a>
+						<a class="mui-tab-item" href="#tabbar-dingyue">
+							<span class="mui-icon mui-icon-contact"></span>
+							<span class="mui-tab-label">订阅</span>
+						</a>
+						<a class="mui-tab-item" href="#tabbar-mine">
+							<span class="mui-icon mui-icon-gear"></span>
+							<span class="mui-tab-label">我的</span>
+						</a>
+					</nav>
+		            <!-- 主页面内容容器 -->
+		            <div class="mui-content mui-scroll-wrapper">
+		                <div class="mui-scroll">
+		                    <!-- 主界面具体展示内容 -->
+		                    <div class="mui-content">
+								<div id="tabbarindex" class="mui-control-content mui-active">
+									<!--下拉刷新容器-->
+									<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted indexnavpar">
+											<a class="mui-control-item indexnav mui-active" href="#indexnav1">
+												推荐 
+											</a>
+											<a class="mui-control-item indexnav" href="#indexnav2">
+												排行 
+											</a>
+											<a class="mui-control-item indexnav" href="#indexnav3">
+												分类
+											</a>
+											<a class="mui-control-item indexnav" href="#indexnav4">
+												作者
+											</a>
+									</div>
+									<!--推荐-->
+									<div class="mui-slider-group">
+										<div id="indexnav1" class="mui-slider-item mui-control-content mui-active">
+											<div  class="mui-content mui-scroll-wrapper indexcontent">
+											    <div class="mui-scroll pullrefresh">
+											        <!--数据列表-->
+											        <ul class="mui-table-view mui-table-view-chevron">
+											            <li class=" tjcontent">
+											            	<div class="mui-col-xs-2 mui-col-sm-2 tj-userimg">
+											            		<img src="./images/users.png" alt="" class="tj-user-img"/>
+											            	</div>
+											            	<div class="mui-col-xs-10 mui-col-sm-10 tj-art">
+											            		<h3 class="tj-art-tit">今日寄语</h3>
+											            		<p class="tj-art-p">人类把我们的水和徒弟都夺走了不久后就会夺走风，最后连身居住的地方都会占为己有。但作为交换，人类最终都是去灵魂。</p>
+											            		<p class="tj-art-from">——From《<sapn>河童之夏</sapn>》</p>
+											            	</div>
+											            	<div class="mui-col-xs-12 mui-col-sm-12 tj-art-qs">
+											            		<a href="" class="mui-icon mui-icon-chat art-ql"><span>趣聊吧</span></a>
+											            		<a href="" class="mui-icon mui-icon-starhalf art-sc"><span>收藏</span></a>
+											            	</div>
+											            </li>
+											            <li class=" tjcontent">
+											            	<div class="mui-col-xs-2 mui-col-sm-2 tj-userimg">
+											            		<img src="./images/users.png" alt="" class="tj-user-img"/>
+											            	</div>
+											            	<div class="mui-col-xs-10 mui-col-sm-10 tj-art">
+											            		<h3 class="tj-art-tit">今日寄语</h3>
+											            		<p class="tj-art-p">人类把我们的水和徒弟都夺走了不久后就会夺走风，最后连身居住的地方都会占为己有。但作为交换，人类最终都是去灵魂。</p>
+											            		<p class="tj-art-from">——From《<sapn>河童之夏</sapn>》</p>
+											            	</div>
+											            	<div class="mui-col-xs-12 mui-col-sm-12 tj-art-qs">
+											            		<a href="" class="mui-icon mui-icon-chat art-ql"><span>趣聊吧</span></a>
+											            		<a href="" class="mui-icon mui-icon-starhalf art-sc"><span>收藏</span></a>
+											            	</div>
+											            </li>
+											            <li class=" tjcontent">
+											            	<div class="mui-col-xs-2 mui-col-sm-2 tj-userimg">
+											            		<img src="./images/users.png" alt="" class="tj-user-img"/>
+											            	</div>
+											            	<div class="mui-col-xs-10 mui-col-sm-10 tj-art">
+											            		<h3 class="tj-art-tit">今日寄语</h3>
+											            		<p class="tj-art-p">人类把我们的水和徒弟都夺走了不久后就会夺走风，最后连身居住的地方都会占为己有。但作为交换，人类最终都是去灵魂。</p>
+											            		<p class="tj-art-from">——From《<sapn>河童之夏</sapn>》</p>
+											            	</div>
+											            	<div class="mui-col-xs-12 mui-col-sm-12 tj-art-qs">
+											            		<a href="" class="mui-icon mui-icon-chat art-ql"><span>趣聊吧</span></a>
+											            		<a href="" class="mui-icon mui-icon-starhalf art-sc"><span>收藏</span></a>
+											            	</div>
+											            </li>
+											            <li class=" tjcontent">
+											            	<div class="mui-col-xs-2 mui-col-sm-2 tj-userimg">
+											            		<img src="./images/users.png" alt="" class="tj-user-img"/>
+											            	</div>
+											            	<div class="mui-col-xs-10 mui-col-sm-10 tj-art">
+											            		<h3 class="tj-art-tit">今日寄语</h3>
+											            		<p class="tj-art-p">人类把我们的水和徒弟都夺走了不久后就会夺走风，最后连身居住的地方都会占为己有。但作为交换，人类最终都是去灵魂。</p>
+											            		<p class="tj-art-from">——From《<sapn>河童之夏</sapn>》</p>
+											            	</div>
+											            	<div class="mui-col-xs-12 mui-col-sm-12 tj-art-qs">
+											            		<a href="" class="mui-icon mui-icon-chat art-ql"><span>趣聊吧</span></a>
+											            		<a href="" class="mui-icon mui-icon-starhalf art-sc"><span>收藏</span></a>
+											            	</div>
+											            </li>
+											        </ul>
+											    </div>
+											</div>
+										</div>
+										<!--排行-->
+										<div id="indexnav2" class="mui-slider-item mui-control-content">
+											<div  class="mui-content mui-scroll-wrapper indexcontent">
+											    <div class="mui-scroll pullrefresh">
+											        <!--数据列表-->
+											        <ul class="mui-table-view mui-table-view-chevron">
+											            <li class=" tjcontent">
+											            	<div class="mui-col-xs-2 mui-col-sm-2 tj-userimg">
+											            		<img src="./images/users.png" alt="" class="tj-user-img"/>
+											            	</div>
+											            	<div class="mui-col-xs-10 mui-col-sm-10 tj-art">
+											            		<h3 class="tj-art-tit">今日寄语</h3>
+											            		<p class="tj-art-p">人类把我们的水和徒弟都夺走了不久后就会夺走风，最后连身居住的地方都会占为己有。但作为交换，人类最终都是去灵魂。</p>
+											            		<p class="tj-art-from">——From《<sapn>河童之夏</sapn>》</p>
+											            	</div>
+											            	<div class="mui-col-xs-12 mui-col-sm-12 tj-art-qs">
+											            		<a href="" class="mui-icon mui-icon-chat art-ql"><span>趣聊吧</span></a>
+											            		<a href="" class="mui-icon mui-icon-starhalf art-sc"><span>收藏</span></a>
+											            	</div>
+											            </li>
+											        </ul>
+											    </div>
+											</div>
+										</div>
+										<!--分类-->
+										<div id="indexnav3" class="mui-slider-item mui-control-content">
+											<div  class="mui-content mui-scroll-wrapper indexcontent">
+											    <div class="mui-scroll ">
+											        <!--数据列表-->
+												        <ul class="index-sort">
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort1.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">今日寄语</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort2.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">新技能GET</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort2.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">小文艺</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort1.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">萌 . 宠</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort2.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">科技有意思</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort2.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">好玩的视频</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort1.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">Fashion</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort2.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">今日寄语</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort2.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">目测必火</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort1.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">读者文章</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort2.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">你说啥</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort2.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">今日寄语</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort1.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">无敌是多麽寂寞</span>
+												            	</a>
+												            </li>
+												            <li class="flcontent">
+												            	<a href="">
+												            		<img src="./images/sort2.png" alt="" class="fl-img"/>
+												            		<span class="fl-title">今日寄语</span>
+												            	</a>
+												            </li>
+												        </ul>
+												</div>
+											</div>
+										</div>
+										<!--作者-->
+										<div id="indexnav4" class="mui-slider-item mui-control-content">
+											<div  class="mui-content mui-scroll-wrapper indexcontent">
+											    <div class="mui-scroll">
+											        <!--数据列表-->
+											        <ul class="index-author">
+											            <li class="authcontent">
+											            	<a href="">
+											            		<img src="./images/author.png" alt="" class="auth-img"/>
+											            		<p class="auth-p"><span>林夕</span>现专职写作，为《读者》、《青年文摘》杂志的签约作家，是目前最具人气的华语作家之一</p>
+											            	</a>
+											            </li>
+											            <li class="authcontent">
+											            	<a href="">
+											            		<img src="./images/author.png" alt="" class="auth-img"/>
+											            		<p class="auth-p"><span>林夕</span>现专职写作，为《读者》、《青年文摘》杂志的签约作家，是目前最具人气的华语作家之一</p>
+											            	</a>
+											            </li>
+											            <li class="authcontent">
+											            	<a href="">
+											            		<img src="./images/author.png" alt="" class="auth-img"/>
+											            		<p class="auth-p"><span>林夕</span>现专职写作，为《读者》、《青年文摘》杂志的签约作家，是目前最具人气的华语作家之一</p>
+											            	</a>
+											            </li>
+											            <li class="authcontent">
+											            	<a href="">
+											            		<img src="./images/author.png" alt="" class="auth-img"/>
+											            		<p class="auth-p"><span>林夕</span>现专职写作，为《读者》、《青年文摘》杂志的签约作家，是目前最具人气的华语作家之一</p>
+											            	</a>
+											            </li>
+											            <li class="authcontent">
+											            	<a href="">
+											            		<img src="./images/author.png" alt="" class="auth-img"/>
+											            		<p class="auth-p"><span>林夕</span>现专职写作，为《读者》、《青年文摘》杂志的签约作家，是目前最具人气的华语作家之一</p>
+											            	</a>
+											            </li>
+											            <li class="authcontent">
+											            	<a href="">
+											            		<img src="./images/author.png" alt="" class="auth-img"/>
+											            		<p class="auth-p"><span>林夕</span>现专职写作，为《读者》、《青年文摘》杂志的签约作家，是目前最具人气的华语作家之一</p>
+											            	</a>
+											            </li>
+											            <li class="authcontent">
+											            	<a href="">
+											            		<img src="./images/author.png" alt="" class="auth-img"/>
+											            		<p class="auth-p"><span>林夕</span>现专职写作，为《读者》、《青年文摘》杂志的签约作家，是目前最具人气的华语作家之一</p>
+											            	</a>
+											            </li>
+											        </ul>
+											    </div>
+											</div>
+										</div>
+									</div> 	
+								</div>
+								<div id="tabbar-faxian" class="mui-control-content">
+									<div class="title">这是div模式选项卡中的第2个子页面，该页面展示一个消息列表</div>
+									
+									<ul class="mui-table-view mui-table-view-chevron">
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 1</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 2</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 3</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 4</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 5</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 6</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 7</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 8</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 9</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 10</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 11</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 12</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 13</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 14</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 15</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 16</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 17</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 18</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 19</a></li>
+										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 20</a></li>
+									</ul>
+									
+								</div>
+								<div id="tabbar-dingyue" class="mui-control-content">
+									<div class="title">这是div模式选项卡中的第3个子页面，该页面展示一个通讯录示例.</div>
+									
+								</div>
+								<div id="tabbar-mine" class="mui-control-content">
+									<div class="title">这是div模式选项卡中的第4个子页面，该页面展示一个常见的设置示例.</div>
+									<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right">
+											新消息通知
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right">
+											隐私
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right">
+											通用
+										</a>
+									</li>
+								</ul>
+								<ul class="mui-table-view" style="margin-top: 25px;">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right">
+											关于mui
+										</a>
+									</li>
+								</ul>
+								<ul class="mui-table-view" style="margin-top: 25px;">
+									<li class="mui-table-view-cell">
+										<a style="text-align: center;color: #FF3B30;">
+											退出登录
+										</a>
+									</li>
+								</ul>
+								</div>
+							</div>
+		                </div>
+		            </div>
+		       	 <div class="mui-off-canvas-backdrop"></div>
+		        </div>
+		    </div>
+		
+	</body>
+	<!--上拉下拉-->
+	<script src="./js/mui.pullToRefresh.js"></script>
+	<script src="./js/mui.pullToRefresh.material.js"></script>
+	<script src="./js/index_pullrefresh.js"></script>
+	<script src="./js/open_newpages.js"></script>
+	<script type="text/javascript">
+		mui.init();
+			
+	</script>
+</html>

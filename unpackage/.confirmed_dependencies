@@ -1,0 +1,23 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"shouye.html"
+		],
+		"refer": [
+			"shouye.html",
+			"shezhi.html",
+			"pullrefresh_sub.html",
+			"xiaoxi.html"
+		]
+	},
+	"shouye.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	}
+}

@@ -1,0 +1,56 @@
+/*推荐，排行*/
+.tjcontent{padding: 20px 0;border-bottom: 1px solid #ddd;overflow: hidden;}
+.tj-userimg{float: left;}
+.tj-user-img{width: 100%;}
+.tj-art{float: left;padding-left:10px;}
+.tj-art-tit{font-size: 0.875rem;color: #3db6fd;font-weight: normal;margin: 0 0 10px 0;}
+.tj-art-p{font-size: 0.875rem;color: #666;text-align: justify;}
+.tj-art-from{text-align: right;font-size: 0.75rem;}
+.tj-art-qs{float: left;text-align: right;}
+.tj-art-qs span{color: #ccc;padding: 0 8px 0 4px;}
+.art-ql{font-size: 0.75rem;color: #2dc8aa;}
+.art-sc{font-size: 0.75rem;color: #ff9191;}
+
+/*分类*/
+.index-sort{background-color: #F8F8F8;position: relative;margin-top: 0;margin-bottom: 0;list-style: none;padding-left: 3%;padding-top: 3%;overflow: hidden;}
+.flcontent{width: 47%; position: relative;float: left;margin-right: 3%;margin-bottom: 3%;}
+.fl-img{width: 100%;}
+.fl-title{font-size: 1rem;color: #fff; position: absolute;left: 50%;top: 50%;z-index: 1;transform: translate(-50%,-50%);}
+
+/*作者*/
+.index-author{background-color: #F8F8F8;position: relative;margin-top: 0;margin-bottom: 0;list-style: none;padding-left: 3%;padding-top: 3%;overflow: hidden;}
+.authcontent{width: 47%; position: relative;float: left;margin-right: 3%;margin-bottom: 3%;}
+.auth-img{width: 30%; position: absolute;top: 0;left: 50%;transform: translateX(-50%);}
+.auth-p{width: 100%;height: 75%;margin-top: 15%;background-color: #fff;padding: 15% 10px 20px 10px;text-align: justify;line-height: 2;font-size: 0.75rem;color: #666;}
+.auth-p span{color: #3db6fd;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
