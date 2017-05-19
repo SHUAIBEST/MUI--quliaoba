@@ -76,16 +76,17 @@
 				width: 40px;
 			}
 			/*自定义样式*/
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item{border-bottom: 1px solid transparent;}
 			.mui-bar-nav{background-color: #3db6fd;}
 			.header-icon-color{color: #fff;}
 			.mui-bar-tab{background-color: #fff;}
 			.mui-bar-tab .mui-tab-item{color: #999;}
-			.mui-slider-indicator{background-color: #fff;}
 			/**/
 			#tabbarindex{
 				position: relative;
 			}
 			.indexnavpar{
+				background-color: #fff;
 				position: absolute;
 				top: 0;left: 0;
 				z-index: 10;
@@ -138,7 +139,7 @@
 							<span class="mui-tab-label">首页</span>
 						</a>
 						<a class="mui-tab-item" href="#tabbar-faxian">
-							<span class="mui-icon mui-icon-email"><span class="mui-badge">9</span></span>
+							<span class="mui-icon mui-icon-email"><!--<span class="mui-badge">9</span>--></span>
 							<span class="mui-tab-label">发现</span>
 						</a>
 						<a class="mui-tab-item" href="#tabbar-dingyue">
@@ -155,6 +156,7 @@
 		                <div class="mui-scroll">
 		                    <!-- 主界面具体展示内容 -->
 		                    <div class="mui-content">
+		                    	<!--首页-->
 								<div id="tabbarindex" class="mui-control-content mui-active">
 									<!--下拉刷新容器-->
 									<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted indexnavpar">
@@ -171,8 +173,9 @@
 												作者
 											</a>
 									</div>
-									<!--推荐-->
+									
 									<div class="mui-slider-group">
+										<!--推荐-->
 										<div id="indexnav1" class="mui-slider-item mui-control-content mui-active">
 											<div  class="mui-content mui-scroll-wrapper indexcontent">
 											    <div class="mui-scroll pullrefresh">
@@ -410,36 +413,131 @@
 										</div>
 									</div> 	
 								</div>
+								<!--发现-->
 								<div id="tabbar-faxian" class="mui-control-content">
-									<div class="title">这是div模式选项卡中的第2个子页面，该页面展示一个消息列表</div>
-									
-									<ul class="mui-table-view mui-table-view-chevron">
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 1</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 2</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 3</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 4</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 5</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 6</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 7</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 8</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 9</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 10</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 11</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 12</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 13</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 14</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 15</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 16</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 17</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 18</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 19</a></li>
-										<li class="mui-table-view-cell"><a href="" class="mui-navigate-right">Item 20</a></li>
-									</ul>
-									
+									<div id="slider" class="mui-slider">
+										<div class="mui-slider-group mui-slider-loop">
+											<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+											<div class="mui-slider-item mui-slider-item-duplicate">
+												<a href="#">
+													<img src="./images/yuantiao.jpg">
+													<p class="mui-slider-title">静静看这世界</p>
+												</a>
+											</div>
+											<div class="mui-slider-item">
+												<a href="#">
+													<img src="./images/shuijiao.jpg">
+													<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+												</a>
+											</div>
+											<div class="mui-slider-item">
+												<a href="#">
+													<img src="./images/muwu.jpg">
+													<p class="mui-slider-title">想要一间这样的木屋，静静的喝咖啡</p>
+												</a>
+											</div>
+											<div class="mui-slider-item">
+												<a href="#">
+													<img src="./images/cbd.jpg">
+													<p class="mui-slider-title">Color of SIP CBD</p>
+												</a>
+											</div>
+											<div class="mui-slider-item">
+												<a href="#">
+													<img src="./images/yuantiao.jpg">
+													<p class="mui-slider-title">静静看这世界</p>
+												</a>
+											</div>
+											<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+											<div class="mui-slider-item mui-slider-item-duplicate">
+												<a href="#">
+													<img src="./images/shuijiao.jpg">
+													<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+												</a>
+											</div>
+										</div>
+										<div class="mui-slider-indicator mui-text-right">
+											<div class="mui-indicator mui-active"></div>
+											<div class="mui-indicator"></div>
+											<div class="mui-indicator"></div>
+											<div class="mui-indicator"></div>
+										</div>
+									</div>
+									<!--新势力作家-->
+									<div class="fx-content">
+										<div class="fxcon-tit">
+											<h3>新势力作家</h3>
+											<a href="" class="fx-more">更多</a>
+										</div>
+										<ol class="fx-list">
+											<li class="li-marginleft">
+												<img src="./images/new_auth.png" class="fxlist-img"/>
+												<div class="fxlist-art">
+													<span class="fxlist-name">auth</span>
+													<span class="fxlist-star">666</span>
+												</div>
+											</li>
+											<li>
+												<img src="./images/new_auth.png" class="fxlist-img"/>
+												<div class="fxlist-art">
+													<span class="fxlist-name">artis</span>
+													<span class="fxlist-star">666</span>
+												</div>
+											</li>
+											<li>
+												<img src="./images/new_auth.png" class="fxlist-img"/>
+												<div class="fxlist-art">
+													<span class="fxlist-name">nishiwho</span>
+													<span class="fxlist-star">666</span>
+												</div>
+											</li>
+										</ol>
+									</div>
+									<!--栏目打赏-->
+									<div class="fx-content">
+										<div class="fxcon-tit">
+											<h3 class="fxcon2-tit">栏目打赏排行榜</h3>
+											<a href="" class="fx-more">更多</a>
+										</div>
+										<ol class="fx-list2">
+											<li class="">
+												<img src="./images/pet.png" class="fxlist2-img"/>
+												<div class="fxlist2-name">萌.宠</div>
+											</li>
+											<li>
+												<img src="./images/pet.png" class="fxlist2-img"/>
+												<div class="fxlist2-name">萌.宠</div>
+											</li>
+											<li>
+												<img src="./images/pet.png" class="fxlist2-img"/>
+												<div class="fxlist2-name">萌.宠</div>
+											</li>
+											<li>
+												<img src="./images/pet.png" class="fxlist2-img"/>
+												<div class="fxlist2-name">萌.宠</div>
+											</li>
+										</ol>
+									</div>
 								</div>
 								<div id="tabbar-dingyue" class="mui-control-content">
-									<div class="title">这是div模式选项卡中的第3个子页面，该页面展示一个通讯录示例.</div>
-									
+									<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted indexnavpar">
+											<a class="mui-control-item indexnav mui-active" href="#subscription1">
+												栏目订阅 
+											</a>
+											<a class="mui-control-item indexnav" href="#subscription2">
+												作者订阅 
+											</a>
+											
+									</div>
+									<div class="mui-slider-group">
+										<!--栏目注册-->
+										<div id="subscription1" class="mui-slider-item mui-control-content mui-active">
+											1
+										</div>	
+										<div id="subscription2" class="mui-slider-item mui-control-content">
+											2
+										</div>	
+									</div>
 								</div>
 								<div id="tabbar-mine" class="mui-control-content">
 									<div class="title">这是div模式选项卡中的第4个子页面，该页面展示一个常见的设置示例.</div>

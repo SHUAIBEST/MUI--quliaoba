@@ -15,7 +15,7 @@
 .index-sort{background-color: #F8F8F8;position: relative;margin-top: 0;margin-bottom: 0;list-style: none;padding-left: 3%;padding-top: 3%;overflow: hidden;}
 .flcontent{width: 47%; position: relative;float: left;margin-right: 3%;margin-bottom: 3%;}
 .fl-img{width: 100%;}
-.fl-title{font-size: 1rem;color: #fff; position: absolute;left: 50%;top: 50%;z-index: 1;transform: translate(-50%,-50%);}
+.fl-title{width: 100%;text-align: center;font-size: 1rem;color: #fff; position: absolute;left:0;top: 50%;z-index: 1;transform: translate(0,-50%);}
 
 /*作者*/
 .index-author{background-color: #F8F8F8;position: relative;margin-top: 0;margin-bottom: 0;list-style: none;padding-left: 3%;padding-top: 3%;overflow: hidden;}
@@ -24,23 +24,26 @@
 .auth-p{width: 100%;height: 75%;margin-top: 15%;background-color: #fff;padding: 15% 10px 20px 10px;text-align: justify;line-height: 2;font-size: 0.75rem;color: #666;}
 .auth-p span{color: #3db6fd;}
 
+/*发现*/
+/*新势力作家*/
+.fx-content{margin: 10px 0;background-color: #fff;}
+.fxcon-tit{border-bottom: 1px solid #ddd;padding: 10px 0;overflow: hidden;}
+.fxcon-tit h3{float: left;margin: 0;margin-left: 10px;font-size: 1rem;line-height: 1;padding-left: 10px;border-left: 1px solid #06b414;}
+.fx-more{float: right;margin-right: 10px;color: #999;font-size: 1rem;line-height: 1;}
+.fx-list{overflow: hidden;margin: 0;padding:0;list-style: none;}
+.fx-list li{float: left;width: 30%;margin: 3% 0; margin-right: 2.5%;background-color: #f8f8f8;border-radius: 4px;}
+.fx-list .li-marginleft{margin-left: 2.5%;}
+.fxlist-img{float: left;width: 37%;}
+.fxlist-art{float: left;padding-left: 10px;}
+.fxlist-art span{display: block;font-size:0.875rem;line-height: 2;}
+.fxlist-star{background: url(../images/star.png) 0 50% no-repeat;text-align: center;padding-left: 25px;}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*栏目打赏*/
+.fxcon-tit .fxcon2-tit{border-left: 1px solid #ff536d;}
+.fx-list2{overflow: hidden;margin: 0;padding:0;list-style: none;}
+.fx-list2 li{float: left;width: 25%;margin: 5% 0;padding:0 5%;}
+.fxlist2-img{border-radius: 50%;width: 100%;}
+.fxlist2-name{width: 100%;height: 25px;border: 1px solid #3db6fd;text-align: center;line-height: 25px;color: #3db6fd;font-size: 0.875rem;}
 
 
 
